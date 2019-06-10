@@ -9,7 +9,7 @@ import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class FrameActivity extends FragmentActivity {
+public class FrameActivity extends FragmentActivity{
     private Fragment mFragments[];
     private RadioGroup radioGroup;
     private FragmentManager fragmentManager;
@@ -32,7 +32,7 @@ public class FrameActivity extends FragmentActivity {
         rbtHome = findViewById(R.id.radioHome);
         rbtThought = findViewById(R.id.radioThought);
         rbtPlan = findViewById(R.id.radioPlan);
-        rbtHome.setBackgroundResource(R.drawable.shape3);
+        rbtHome.setBackgroundResource(R.drawable.shape2);
         rbtThought.setBackgroundResource(R.drawable.shape3);
         rbtPlan.setBackgroundResource(R.drawable.shape3);
         radioGroup = findViewById(R.id.bottomGroup);
@@ -41,21 +41,21 @@ public class FrameActivity extends FragmentActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 Log.i("radioGroup","ceckedId="+checkedId);
                 fragmentTransaction = fragmentManager.beginTransaction().hide(mFragments[0]).hide(mFragments[1]).hide(mFragments[2]);
-                rbtHome.setBackgroundResource(R.drawable.shape2);
-                rbtThought.setBackgroundResource(R.drawable.shape2);
-                rbtPlan.setBackgroundResource(R.drawable.shape2);
+                rbtHome.setBackgroundResource(R.drawable.shape3);
+                rbtThought.setBackgroundResource(R.drawable.shape3);
+                rbtPlan.setBackgroundResource(R.drawable.shape3);
                 switch (checkedId){
                     case R.id.radioHome:
                         fragmentTransaction.show(mFragments[0]).commit();
-                        rbtHome.setBackgroundResource(R.drawable.shape3);
+                        rbtHome.setBackgroundResource(R.drawable.shape2);
                         break;
                     case R.id.radioThought:
                         fragmentTransaction.show(mFragments[1]).commit();
-                        rbtThought.setBackgroundResource(R.drawable.shape3);
+                        rbtThought.setBackgroundResource(R.drawable.shape2);
                         break;
                     case R.id.radioPlan:
                         fragmentTransaction.show(mFragments[2]).commit();
-                        rbtPlan.setBackgroundResource(R.drawable.shape3);
+                        rbtPlan.setBackgroundResource(R.drawable.shape2);
                         break;
                     default:
                         break;

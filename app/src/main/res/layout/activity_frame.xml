@@ -34,19 +34,19 @@
         <RadioButton
             android:id="@+id/radioHome"
             style="@style/rg_btn_style"
-
+            android:drawableTop="@drawable/home"
             android:text="@string/radio_home" />
 
         <RadioButton
             android:id="@+id/radioThought"
             style="@style/rg_btn_style"
-
+            android:drawableTop="@drawable/thought"
             android:text="@string/radio_thought" />
 
         <RadioButton
             android:id="@+id/radioPlan"
             style="@style/rg_btn_style"
-
+            android:drawableTop="@drawable/plan"
             android:text="@string/radio_plan" />
 
     </RadioGroup>
