@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FrameActivity">
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.dawn.finalhomework.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"/>
+    <fragment
+        android:id="@+id/fragment_thought"
+        android:name="com.dawn.finalhomework.ThoughtFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"/>
+    <fragment
+        android:id="@+id/fragment_plan"
+        android:name="com.dawn.finalhomework.PlanFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"/>
+    <RadioGroup
+        android:id="@+id/bottomGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioHome"
+            style="@style/rg_btn_style"
+
+            android:text="@string/radio_home" />
+
+        <RadioButton
+            android:id="@+id/radioThought"
+            style="@style/rg_btn_style"
+
+            android:text="@string/radio_thought" />
+
+        <RadioButton
+            android:id="@+id/radioPlan"
+            style="@style/rg_btn_style"
+
+            android:text="@string/radio_plan" />
+
+    </RadioGroup>
+
+</LinearLayout>
