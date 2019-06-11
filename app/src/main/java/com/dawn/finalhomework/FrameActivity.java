@@ -1,6 +1,11 @@
 package com.dawn.finalhomework;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -8,18 +13,34 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class FrameActivity extends FragmentActivity{
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+
+public class FrameActivity extends FragmentActivity implements Runnable{
     private Fragment mFragments[];
     private RadioGroup radioGroup;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private RadioButton rbtHome,rbtThought,rbtPlan;
+    Handler handler;
+    private String updateDate = "";
+    String todayStn;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame);
+        tv = findViewById(R.id.homeTextView1);
 
         mFragments = new Fragment[3];
         fragmentManager = getSupportFragmentManager();
@@ -62,5 +83,74 @@ public class FrameActivity extends FragmentActivity{
                 }
             }
         });
+        //获取当前系统时间
+        Date today = Calendar.getInstance().getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd");
+        final String todayStr = sdf.format(today);
+        Log.i("第一个页面","今日系统时间"+todayStr);
+        //获取保存的时间与句子
+        SharedPreferences sharedPreferences = getSharedPreferences("mystn",Activity.MODE_PRIVATE);
+        updateDate = sharedPreferences.getString("Supdate","");
+        todayStn = sharedPreferences.getString("Stodaystn","");
+
+        Log.i("第一个页面","保存后更新时间"+updateDate);
+
+        Thread t = new Thread(this);
+        t.start();
+        handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if (!todayStr.equals(updateDate)){
+                    Log.i("第一个页面","需要更新");
+                    if (msg.what==5){
+                        Bundle bdl = (Bundle) msg.obj;
+                        todayStn = bdl.getString("sentence");
+                        Log.i("第一个页面","带回今日句子"+todayStn);
+                        //保存更新日期、今日句子
+                        SharedPreferences sharedPreferences = getSharedPreferences("mystn",Activity.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("Supdate",todayStr);
+                        editor.putString("Stodaystn",todayStn);
+                        editor.apply();
+                        Log.i("第一个页面","已保存日期和句子"+todayStn);
+                        tv.setText(todayStn);
+                        Toast.makeText(FrameActivity.this,"句子已更新",Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Log.i("第一个页面","不需要更新"+"今日句子是"+todayStn);
+                    tv.setText(todayStn);
+                }
+
+                super.handleMessage(msg);
+            }
+        };
+
+    }
+    @Override
+    public void run() {
+        Bundle bundle = getFromNET();
+        //获取msg对象，用于返回主线程
+        Message msg = handler.obtainMessage(5);
+        msg.obj = bundle;
+        handler.sendMessage(msg);
+    }
+    private Bundle getFromNET() {
+        Bundle bundle = new Bundle();
+        Document doc = null;
+        try{
+            java.util.Random r = new java.util.Random();
+            int i = r.nextInt(70)+1;
+            doc = Jsoup.connect("http://www.buhuiwan.com/juzi/4508.html").get();
+            Log.i("第一个页面","run:"+doc.title());
+            Elements ps = doc.getElementsByTag("p");
+            Element p=ps.get(i);
+            String pt = p.text();
+            bundle.putString("sentence",pt);
+            Log.i("第一个页面","获取到今日句子"+pt);
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return bundle;
     }
 }
