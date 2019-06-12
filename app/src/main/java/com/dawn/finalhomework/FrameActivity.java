@@ -42,8 +42,6 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
     private String updateDate = "";
     String todayStn;
     TextView jz;
-    TextView bj;
-    TextView jh;
     ArrayAdapter adapter;
     List<String> plan = new ArrayList<String>();
 
@@ -52,8 +50,6 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame);
         jz = findViewById(R.id.homeTextView1);
-        //bj = findViewById(R.id.thoughtTextView1);
-        jh = findViewById(R.id.planDate);
 
 
         mFragments = new Fragment[3];
@@ -128,13 +124,11 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
                         editor.apply();
                         Log.i("第一个页面","已保存日期和句子"+todayStn);
                         jz.setText(todayStn);
-                        jh.setText(todayStr);
                         Toast.makeText(FrameActivity.this,"句子已更新",Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Log.i("第一个页面","不需要更新"+"今日句子是"+todayStn);
                     jz.setText(todayStn);
-                    jh.setText(todayStr);
                 }
 
                 super.handleMessage(msg);
