@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         nameT = findViewById(R.id.name);
         passwordT = findViewById(R.id.password);
-
-
-
     }
     public void openOne(View btn){
         //打开其他页面的代码

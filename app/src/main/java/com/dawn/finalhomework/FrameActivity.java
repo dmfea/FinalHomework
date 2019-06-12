@@ -1,6 +1,7 @@
 package com.dawn.finalhomework;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
@@ -11,6 +12,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -22,10 +27,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
-public class FrameActivity extends FragmentActivity implements Runnable{
+public class FrameActivity extends FragmentActivity implements Runnable, AdapterView.OnItemClickListener{
     private Fragment mFragments[];
     private RadioGroup radioGroup;
     private FragmentManager fragmentManager;
@@ -34,13 +41,19 @@ public class FrameActivity extends FragmentActivity implements Runnable{
     Handler handler;
     private String updateDate = "";
     String todayStn;
-    TextView tv;
+    TextView jz;
+    TextView bj;
+    TextView jh;
+    ArrayAdapter adapter;
+    List<String> plan = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame);
-        tv = findViewById(R.id.homeTextView1);
+        jz = findViewById(R.id.homeTextView1);
+        bj = findViewById(R.id.thoughtTextView1);
+        jh = findViewById(R.id.planDate);
 
         mFragments = new Fragment[3];
         fragmentManager = getSupportFragmentManager();
@@ -113,18 +126,30 @@ public class FrameActivity extends FragmentActivity implements Runnable{
                         editor.putString("Stodaystn",todayStn);
                         editor.apply();
                         Log.i("第一个页面","已保存日期和句子"+todayStn);
-                        tv.setText(todayStn);
+                        jz.setText(todayStn);
+                        bj.setText(todayStr);
+                        jh.setText(todayStr);
                         Toast.makeText(FrameActivity.this,"句子已更新",Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Log.i("第一个页面","不需要更新"+"今日句子是"+todayStn);
-                    tv.setText(todayStn);
+                    jz.setText(todayStn);
+                    bj.setText(todayStr);
+                    jh.setText(todayStr);
                 }
 
                 super.handleMessage(msg);
             }
         };
-
+        ListView listView = findViewById(R.id.myPlanlist);
+        PlanManager manager = new PlanManager(this);
+        for (PlanItem item :manager.listAll()){
+            plan.add(item.getCurPlan());
+        }
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,plan);
+        listView.setAdapter(adapter);
+        listView.setEmptyView(findViewById(R.id.noPlan));
+        listView.setOnItemClickListener(this);
     }
     @Override
     public void run() {
@@ -152,5 +177,18 @@ public class FrameActivity extends FragmentActivity implements Runnable{
             e.printStackTrace();
         }
         return bundle;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> listv, View view, int position, long id) {
+        Log.i("第三个页面","onItemClick:position"+position);
+        Log.i("第三个页面","onItemClick:parent"+listv);
+        adapter.remove(listv.getItemAtPosition(position));
+    }
+    public void openThree(View btn){
+        Intent intent = new Intent(this,PlanActivity.class);
+        startActivityForResult(intent,2);
+        finish();
+
     }
 }
