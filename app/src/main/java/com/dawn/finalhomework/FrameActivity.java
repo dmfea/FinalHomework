@@ -184,4 +184,6 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
         finish();
 
     }
+
+
 }
