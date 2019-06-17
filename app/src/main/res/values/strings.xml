@@ -17,8 +17,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="plan_title">要坚持做完计划的事情呀！</string>
-    <string name="plan_button">新做一个计划吧</string>
-    <string name="newin">新建进入号</string>
+    <string name="plan_button">新建一个计划</string>
+    <string name="newin">新建临时进入号</string>
     <string name="newuser">新建</string>
     <string name="sure">确认</string>
+    <string name="plan">请输入新计划</string>
+    <string name="home_title">每日一句的心灵鸡汤</string>
 </resources>

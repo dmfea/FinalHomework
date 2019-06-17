@@ -24,7 +24,7 @@
     </style>
     <style name="MyStyle" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">#89a9be</item>
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">#d8bce9</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>

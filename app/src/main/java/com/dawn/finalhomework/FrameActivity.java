@@ -124,7 +124,7 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
                         editor.apply();
                         Log.i("第一个页面","已保存日期和句子"+todayStn);
                         jz.setText(todayStn);
-                        Toast.makeText(FrameActivity.this,"句子已更新",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FrameActivity.this,"句子已更新",Toast.LENGTH_LONG).show();
                     }
                 }else {
                     Log.i("第一个页面","不需要更新"+"今日句子是"+todayStn);

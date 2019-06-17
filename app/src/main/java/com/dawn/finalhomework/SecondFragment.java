@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ public class SecondFragment extends Fragment {
         super.onActivityCreated(savadInstanceState);
         bj = getActivity().findViewById(R.id.bjrj);
         second_show = getActivity().findViewById(R.id.second_show);
+        second_show.setMovementMethod(ScrollingMovementMethod.getInstance());
         rjshow = second_show.getText().toString();
 
         //获取SP里保存的数据

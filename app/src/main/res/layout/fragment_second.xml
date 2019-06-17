@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/home"
+    android:background="@mipmap/second"
     tools:context=".SecondFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/second_show"
-            android:layout_width="match_parent"
-            android:layout_height="470dp"
-            android:text="快记录第一条日记吧" />
+    <TextView
+        android:id="@+id/second_show"
+        android:layout_width="301dp"
+        android:layout_height="333dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="快记录第一条笔记吧"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:id="@+id/bjrj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="编辑日记" />
+    <Button
+        android:id="@+id/bjrj"
+        android:layout_width="232dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#00000000"
+        android:textColor="#aaacbc"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="编辑日记"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
 
-    </LinearLayout>
 
-
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>
