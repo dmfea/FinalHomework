@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">一天</string>
     <string name="radio_home">句子</string>
-    <string name="radio_thought">笔记</string>
+    <string name="radio_thought">记录</string>
     <string name="radio_plan">计划</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -20,4 +20,5 @@
     <string name="plan_button">新做一个计划吧</string>
     <string name="newin">新建进入号</string>
     <string name="newuser">新建</string>
+    <string name="sure">确认</string>
 </resources>

@@ -6,31 +6,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-public class BjActivity extends AppCompatActivity {
-    EditText first_input;
+public class RjActivity extends AppCompatActivity {
+    EditText second_input;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bj);
+        setContentView(R.layout.activity_rj);
 
         Intent intent = getIntent();
-        String bj = intent.getStringExtra("first_bj");
+        String rj = intent.getStringExtra("second_rj");
 
-        first_input = findViewById(R.id.first_input);
+        second_input = findViewById(R.id.second_input);
 
-        first_input.setText(bj);
+        second_input.setText(rj);
     }
     public void save(View btn){
         //获取新的值
-        String newbj = first_input.getText().toString();
+        String newbj = second_input.getText().toString();
 
         //保存值到Bundle或放入到Extra
         Intent intent = getIntent();
         Bundle bdl = new Bundle();
-        bdl.putString("new_bj",newbj);
+        bdl.putString("new_rj",newbj);
         intent.putExtras(bdl);
-        setResult(99,intent);
+        setResult(97,intent);
 
         //返回原来页面
         finish();

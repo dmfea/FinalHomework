@@ -180,7 +180,7 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
     }
     public void openThree(View btn){
         Intent intent = new Intent(this,PlanActivity.class);
-        startActivityForResult(intent,2);
+        startActivity(intent);
         finish();
 
     }

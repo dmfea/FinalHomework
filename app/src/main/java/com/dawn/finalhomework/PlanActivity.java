@@ -23,7 +23,7 @@ public class PlanActivity extends AppCompatActivity {
         PlanManager manager = new PlanManager(this);
         manager.add(Nplan);
         Intent intent = new Intent(this,FrameActivity.class);
-        startActivityForResult(intent,2);
+        startActivity(intent);
         finish();
     }
 }
