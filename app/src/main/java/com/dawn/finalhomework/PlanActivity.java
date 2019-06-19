@@ -26,5 +26,6 @@ public class PlanActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }
 

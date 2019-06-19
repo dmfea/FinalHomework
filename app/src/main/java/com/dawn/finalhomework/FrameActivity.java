@@ -136,13 +136,30 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
         };
         ListView listView = findViewById(R.id.myPlanlist);
         PlanManager manager = new PlanManager(this);
+        List<String> plan1 = new ArrayList<String>();
         for (PlanItem item :manager.listAll()){
-            plan.add(item.getCurPlan());
+            plan1.add(item.getCurPlan());
         }
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,plan);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,plan1);
         listView.setAdapter(adapter);
         listView.setEmptyView(findViewById(R.id.noPlan));
         listView.setOnItemClickListener(this);
+
+    }
+    public void delete(View btn){
+        PlanManager manager = new PlanManager(this);
+        ListView listView = findViewById(R.id.myPlanlist);
+        List<String> plan2 = new ArrayList<String>();
+        manager.deleteAll();
+        for (PlanItem item :manager.listAll()){
+            plan2.add(item.getCurPlan());
+        }
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,plan2);
+        listView.setAdapter(adapter);
+        listView.setEmptyView(findViewById(R.id.noPlan));
+        listView.setOnItemClickListener(this);
+        Toast.makeText(FrameActivity.this,"计划已清空",Toast.LENGTH_LONG).show();
+        Log.i("","YISHANCHU");
     }
     @Override
     public void run() {
@@ -174,8 +191,7 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
 
     @Override
     public void onItemClick(AdapterView<?> listv, View view, int position, long id) {
-        Log.i("第三个页面","onItemClick:position"+position);
-        Log.i("第三个页面","onItemClick:parent"+listv);
+        Log.i("第三个页面","已移除");
         adapter.remove(listv.getItemAtPosition(position));
     }
     public void openThree(View btn){
@@ -184,6 +200,5 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
         finish();
 
     }
-
 
 }

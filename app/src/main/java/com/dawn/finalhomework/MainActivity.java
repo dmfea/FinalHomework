@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         password = passwordT.getText().toString();
         Log.i("sf",name+password);
         SharedPreferences sp = getSharedPreferences("renzheng",Activity.MODE_PRIVATE);
-        if (name.equals(sp.getString("name","100"))&&password.equals(sp.getString("password","lll"))){
+        if (name.equals(sp.getString("name",""))&&password.equals(sp.getString("password",""))){
             Intent intent = new Intent(this,FrameActivity.class);
             startActivity(intent);
             finish();
