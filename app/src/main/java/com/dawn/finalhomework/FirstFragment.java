@@ -45,7 +45,7 @@ public class FirstFragment extends Fragment {
         bjshow = first_show.getText().toString();
         //获取SP里保存的数据
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("mybj",Activity.MODE_PRIVATE);
-        bjshow = sharedPreferences.getString("fin_bj"," ");
+        bjshow = sharedPreferences.getString("fin_bj","开始记录笔记");
         first_show.setText(bjshow);
 
 
@@ -62,7 +62,6 @@ public class FirstFragment extends Fragment {
         if(requestCode==100&&resultCode==99){
             Bundle bundle = data.getExtras();
             bjshow = bundle.getString("new_bj");
-            //将新设置的汇率写到SP里
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("mybj",Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("fin_bj",bjshow);

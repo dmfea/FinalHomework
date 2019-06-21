@@ -16,7 +16,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="plan_title">坚持计划日日清</string>
+    <string name="plan_title">坚持做到计划日日清</string>
     <string name="plan_button">添加计划</string>
     <string name="newin">新建临时进入号</string>
     <string name="newuser">新建</string>
@@ -24,4 +24,6 @@
     <string name="plan">请输入新计划</string>
     <string name="delete">清空今日计划</string>
     <string name="begin_plan">开始今日计划</string>
+    <string name="zhuce_over">已有账号立即登录</string>
+    <string name="zhuce_in">注册</string>>
 </resources>

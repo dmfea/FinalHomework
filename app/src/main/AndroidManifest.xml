@@ -6,26 +6,27 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/lijian"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/lijian"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".FrameActivity"></activity>
-        <activity android:name=".PlanActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".FrameActivity" />
+        <activity android:name=".PlanActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>>
+        </activity>
+        >
         <activity android:name=".BjActivity" />
         <activity android:name=".NewInActivity" />
-        <activity android:name=".RjActivity"></activity>
+        <activity android:name=".RjActivity" />
+        <activity android:name=".zhuCeActivity" />
+        <activity android:name=".ZhucActivity" />
     </application>
 
 </manifest>

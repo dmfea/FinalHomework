@@ -58,14 +58,14 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
         mFragments[1] = fragmentManager.findFragmentById(R.id.fragment_thought);
         mFragments[2] = fragmentManager.findFragmentById(R.id.fragment_plan);
         fragmentTransaction = fragmentManager.beginTransaction().hide(mFragments[0]).hide(mFragments[1]).hide(mFragments[2]);
-        fragmentTransaction.show(mFragments[0]).commit();
+        fragmentTransaction.show(mFragments[2]).commit();
 
         rbtHome = findViewById(R.id.radioHome);
         rbtThought = findViewById(R.id.radioThought);
         rbtPlan = findViewById(R.id.radioPlan);
-        rbtHome.setBackgroundResource(R.drawable.shape2);
+        rbtHome.setBackgroundResource(R.drawable.shape3);
         rbtThought.setBackgroundResource(R.drawable.shape3);
-        rbtPlan.setBackgroundResource(R.drawable.shape3);
+        rbtPlan.setBackgroundResource(R.drawable.shape2);
         radioGroup = findViewById(R.id.bottomGroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -188,12 +188,14 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
         }
         return bundle;
     }
-
+    private View formerView=null;
     @Override
     public void onItemClick(AdapterView<?> listv, View view, int position, long id) {
         Log.i("第三个页面","已移除");
         adapter.remove(listv.getItemAtPosition(position));
+        adapter.notifyDataSetChanged();
     }
+
     public void openThree(View btn){
         Intent intent = new Intent(this,PlanActivity.class);
         startActivity(intent);

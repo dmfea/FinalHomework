@@ -46,7 +46,7 @@ public class SecondFragment extends Fragment {
 
         //获取SP里保存的数据
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myrj",Activity.MODE_PRIVATE);
-        rjshow = sharedPreferences.getString("fin_rj"," ");
+        rjshow = sharedPreferences.getString("fin_rj","开始记录日记");
         second_show.setText(rjshow);
 
         bj.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class SecondFragment extends Fragment {
         if(requestCode==98&&resultCode==97){
             Bundle bundle = data.getExtras();
             rjshow = bundle.getString("new_rj");
-            //将新设置的汇率写到SP里
+            //将新日记写到SP里
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myrj",Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("fin_rj",rjshow);
