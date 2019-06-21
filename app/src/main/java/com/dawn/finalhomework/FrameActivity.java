@@ -1,6 +1,8 @@
 package com.dawn.finalhomework;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
@@ -146,7 +148,18 @@ public class FrameActivity extends FragmentActivity implements Runnable, Adapter
         listView.setOnItemClickListener(this);
 
     }
-    public void delete(View btn){
+    public boolean sure(View btn){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("提示").setMessage("请确认是否清空今日计划").setNegativeButton("否",null).setPositiveButton("是",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                delete();
+            }
+        });
+        builder.create().show();
+        return true;
+    }
+    public void delete(){
         PlanManager manager = new PlanManager(this);
         ListView listView = findViewById(R.id.myPlanlist);
         List<String> plan2 = new ArrayList<String>();
